@@ -16,14 +16,14 @@ data = trending + latest
 with open("sflix.csv", "w", encoding='utf8', newline='') as csvfile:
     writer = csv.writer(csvfile)
     writer.writerow(["name", "year", "rating", "quality"])
-    for _ in data:
-        film_info = _.findAllNext(name="span", class_="fdi-item")
-        film_rating = film_info[0].text
-        film_quality = film_info[1].text
-        film_year = film_info[2].text
-        film_name = _.find(name="h3", class_="film-name").text.rstrip('\n')
-        writer.writerow([film_name, film_year, film_rating, film_quality])
-
+    # for _ in trending:
+    #     film_info = _.findAllNext(name="span", class_="fdi-item")
+    #     film_rating = film_info[0].text
+    #     film_quality = film_info[1].text
+    #     film_year = film_info[2].text
+    #     film_name = _.find(name="h3", class_="film-name").text.rstrip('\n')
+    #     writer.writerow([film_name, film_year, film_rating, film_quality])
+    #
     # for _ in latest:
     #     film_info = _.findAllNext(name="span", class_="fdi-item")
     #     film_rating = film_info[0].text
@@ -31,3 +31,11 @@ with open("sflix.csv", "w", encoding='utf8', newline='') as csvfile:
     #     film_year = film_info[2].text
     #     film_name = _.find(name="h3", class_="film-name").text
     #     writer.writerow([film_name, film_year, film_rating, film_quality])
+
+    for _ in data:
+        film_info = _.findAllNext(name="span", class_="fdi-item")
+        film_rating = film_info[0].text
+        film_quality = film_info[1].text
+        film_year = film_info[2].text
+        film_name = _.find(name="h3", class_="film-name").text.rstrip('\n')
+        writer.writerow([film_name, film_year, film_rating, film_quality])
